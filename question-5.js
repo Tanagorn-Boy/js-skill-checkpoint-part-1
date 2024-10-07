@@ -18,4 +18,30 @@ const products = [
 ];
 
 const promotionCode = "";
+const promotionCode20 = "SALE20";
+const promotionCode100 = "SALE50";
+
 // เริ่มเขียนโค้ดตรงนี้
+
+function calculateTotalPrice(products, promotionCode) {
+  let totalPrice = 0;
+  let averageprice = 0;
+
+  for (let i = 0; i < products.length; i++) {
+    totalPrice += products[i].price * products[i].quantity;
+  }
+
+  if (promotionCode === "SALE20") {
+    averageprice = totalPrice - (totalPrice * 20) / 100;
+    return averageprice;
+  } else if (promotionCode === "SALE50") {
+    averageprice = (totalPrice * 50) / 100;
+    return averageprice;
+  } else {
+    return totalPrice;
+  }
+}
+
+console.log(calculateTotalPrice(products, promotionCode));
+console.log(calculateTotalPrice(products, promotionCode20));
+console.log(calculateTotalPrice(products, promotionCode100));
